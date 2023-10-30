@@ -104,6 +104,14 @@ def final_plots(analyser, groundtruth_path=None, groundtruth_jobid=None):
     sns.histplot(
         data=data, x=hue, ax=ax[0], kde=False, alpha=0.5, stat="density", bins=7
     )
+    if groundtruth_path:
+        ax[0].axvline(
+            gt_analyser.data[hue][0] / 1000,
+            linestyle="dashed",
+            linewidth=2,
+            color="C3",
+            label="groundtruth",
+        )
     ax[0].set_xlabel("RU enrichment feed [t]")
     ax[0].set_ylabel("density")
     ax[0].set_yticks([])
