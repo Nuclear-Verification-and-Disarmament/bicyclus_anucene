@@ -37,7 +37,7 @@ def plot_mining_production():
     ax.step(mining_df.year - mining_df.year.iloc[0], mining_df.mass / 1e3, where="post")
     ax.set_xlabel("in-simulation year")
     ax.set_ylabel("NU mining [t / year]")
-    plt.savefig(Path("imgs/mining_production.pdf"))
+    plt.savefig(Path("imgs/mining_production.eps"), format="eps")
     plt.close()
 
 

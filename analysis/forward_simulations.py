@@ -35,7 +35,7 @@ def main():
 
 def final_plots(analyser, groundtruth_path=None, groundtruth_jobid=None):
     """Plots used in the paper."""
-    _, ax = plt.subplots(constrained_layout=True, figsize=(4.5, 4))
+    _, ax = plt.subplots(constrained_layout=True, figsize=(3.5, 3))
     sns.histplot(
         data=analyser.data,
         x="total_heu",
@@ -43,11 +43,12 @@ def final_plots(analyser, groundtruth_path=None, groundtruth_jobid=None):
         bins=10,
         stat="count",
         cbar=True,
+        cbar_kws={"label": "counts"},
         ax=ax,
     )
     ax.set_xlabel("total HEU production [kg]")
     ax.set_ylabel("total Pu production [kg]")
-    plt.savefig(analyser.imgs_path / f"total_pu_total_heu_{analyser.job_id}.pdf")
+    plt.savefig(analyser.imgs_path / f"total_pu_total_heu_{analyser.job_id}.eps", format="eps")
     plt.close()
 
     if groundtruth_path:
@@ -87,7 +88,7 @@ def final_plots(analyser, groundtruth_path=None, groundtruth_jobid=None):
         ax[i].set_yticks([])
         ax[i].set_xlabel(xlabel)
     ax[0].set_ylabel("density")
-    plt.savefig(analyser.imgs_path / f"fissile_material_{analyser.job_id}.pdf")
+    plt.savefig(analyser.imgs_path / f"fissile_material_{analyser.job_id}.eps", format="eps")
     plt.close()
 
     data = analyser.data
@@ -123,7 +124,7 @@ def final_plots(analyser, groundtruth_path=None, groundtruth_jobid=None):
     ax[1].get_legend().remove()
     cbar = plt.colorbar(sm, ax=ax[1], pad=0.0)
     cbar.ax.set_ylabel("RU enrichment feed [t]")
-    plt.savefig(analyser.imgs_path / "2dhistogram_params_RU_enrichment_feed.pdf")
+    plt.savefig(analyser.imgs_path / "2dhistogram_params_RU_enrichment_feed.eps", format="eps")
     plt.close()
 
 

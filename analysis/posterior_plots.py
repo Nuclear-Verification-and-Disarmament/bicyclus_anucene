@@ -47,9 +47,9 @@ def get_posterior():
             axis.axvline(groundtruth[xlabel], linestyle="dashed", color="C3")
 
         ax[0].set_ylabel("density")
-        fname = path.parent / f"posterior_{job_id}.pdf"
+        fname = path.parent / f"posterior_{job_id}.eps"
         print(f"Saving plot under {fname}")
-        plt.savefig(fname)
+        plt.savefig(fname, format="eps")
         plt.close()
 
 
